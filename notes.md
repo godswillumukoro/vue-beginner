@@ -87,3 +87,12 @@ Breaking into sperate pieces.
             }
         })
 ```
+
+## LifeCycle Hooks
+A hook is a function that will be triggered to run at a specific point in the lifecycle of a component.
+
+Used to:
+- Check if user is authorized
+- Pull data from API
+- Initialize and remove events
+- Save or Cleanup data from events

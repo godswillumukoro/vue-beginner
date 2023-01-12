@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="globals.css">
+    <title>LifeCycle Hooks</title>
+</head>
+
+<body>
+    <h1>Mumu Button</h1>
+    <main id="container" class="flex">
+        <button @click="toggleCard" class="btn mg-block">Toggle Card</button>
+        <card v-if="isVisible" />
+    </main>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isVisible: false,
+                }
+            },
+
+            methods: {
+                toggleCard() {
+                    this.isVisible = !this.isVisible
+                }
+            },
+            updated() {
+                console.log('updated');
+            }
+
+        })
+
+        // card component
+        app.component('card', {
+            template: `
+                  <div class="card"></div>
+            `,
+            created() {
+                console.log('created');
+            },
+            mounted() {
+                console.log('mounted');
+            },
+            unmounted() {
+                console.log('unmounted');
+            }
+        })
+
+        app.mount('#container')
+    </script>
+</body>
+
+</html>
