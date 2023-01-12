@@ -28,12 +28,26 @@
             data() {
                 return {
                     subtitle: 'Login to your dashboard here...',
-                    name: 'nd',
-                    email: '',
-                    password: '',
-                    nameLabel: 'Fullname',
-                    emailLabel: 'Email Address',
-                    passwordLabel: 'Password'
+                    inputs: [
+                        {
+                            label: 'Fullname',
+                            value: '',
+                            type: 'text',
+                            id: 'name'
+                        },
+                        {
+                            label: 'Email Address',
+                            value: '',
+                            type: 'email',
+                            id: 'email'
+                        },
+                        {
+                            label: 'Password',
+                            value: '',
+                            type: 'password',
+                            id: 'password'
+                        },
+                    ],
                 }
             },
 
@@ -42,9 +56,7 @@
             template: `
                  <p class="sm-txt">{{subtitle}}</p>
                  <form @submit.prevent="handleSubmission" class="flex mg-block">
-                    <custom-input v-bind:label="nameLabel" type="text" id="name"  v-model="name"/>
-                    <custom-input v-bind:label="emailLabel" type="email" id="email"  v-model="email"/>
-                    <custom-input v-bind:label="passwordLabel" type="password" id="password"  v-model="password"/>
+                    <custom-input v-for="(input, i) in inputs" :key="i" v-model="input.value" :label="input.label" :type="input.type" :id="input.id"/>
                     <input type="submit" value="Login" class="btn" />
                 </form>
             `,
@@ -52,9 +64,9 @@
             methods: {
                 handleSubmission() {
                     console.log({
-                        name: this.name,
-                        email: this.email,
-                        password: this.password,
+                        name: this.inputs[0].value,
+                        email: this.inputs[1].value,
+                        password: this.inputs[2].value,
                     })
                 }
             }
@@ -63,10 +75,10 @@
         app.component('custom-input', {
 
             template: `
-                <label v-bind:for="id">
+                <label :for="id">
                     {{label}}
                 </label>
-                <input type="text" v-bind:id="id" v-model="inputValue">
+                <input :type="type" :id="id" v-model="inputValue">
             `,
 
             props: ['label', 'type', 'id', 'modelValue'],
