@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 450px;
+    height: 650px;
+    background-color: brown;
+    border: 2px black dotted;
+}
+
+[v-cloak] {
+    display: none;
+}
