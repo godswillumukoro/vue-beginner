@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,47 @@
     <link rel="stylesheet" href="./globals.css">
     <title>Vue</title>
 </head>
+
 <body>
-    <div id="app" v-cloak>
-        <h1>{{ greeting }} Vue JS</h1>
-        <input v-model="greeting" type="text">
+    <main id="container" v-cloak>
+        <h1>{{greet}} Vue</h1>
 
-        <hr>
-        <button v-on:click="isVisible = !isVisible">Show Box</button>
-        <div v-if="isVisible" class="card">
+        <input @keyup.enter="greeting" type="text" name="" id="" v-model="greet">
 
+        <button @click="toggle" class="btn">SHOW</button>
+        <div class="card" v-if="isVisible">
         </div>
-    </div>
+        <!-- <div class="card2" v-else-if="isVisible2">
+        </div>
+        <div class="card3" v-else>
+        </div> -->
+    </main>
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
+        // 1. Create Vue Instance
         let app = Vue.createApp({
             data: () => {
                 return {
-                    greeting: "Hello",
-                    isVisible: false
+                    greet: 'Hello',
+                    yell: 'Hmm..',
+                    isVisible: false,
+                }
+            },
+            methods: {
+                toggle() {
+                    this.isVisible = !this.isVisible
+                },
+                greeting() {
+                    console.log(this.greet);
                 }
             }
         })
-        app.mount('#app') //Vue instance
 
+        // 2. Connect Vue Instance to DOM element
+        app.mount('#container')
     </script>
 </body>
+
 </html>

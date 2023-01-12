@@ -4,13 +4,59 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: darkviolet;
+    color: aliceblue;
+    font-size: 250%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .card {
     width: 450px;
-    height: 650px;
+    height: 250px;
     background-color: brown;
+    border: 2px black dotted;
+}
+.card2 {
+    width: 450px;
+    height: 250px;
+    background-color: black;
+    border: 2px black dotted;
+}
+.card3 {
+    width: 450px;
+    height: 250px;
+    background-color: yellowgreen;
     border: 2px black dotted;
 }
 
 [v-cloak] {
     display: none;
+}
+
+.btn {
+    padding: 1em 3em;
+    font-size: 1.2rem;
+}
+
+.flex {
+    display: flex;
+    min-height: 20vh;
+    flex-direction: column;
+    max-width: 50%;
+    justify-content: space-between;
+}
+
+input {
+    font-size: 2rem;
+    padding: .2em .5em;
+    margin-block-end: 1.8rem;
+}
+
+.mg-block {
+    margin-block: 1.5rem;
+}
+
+.sm-txt {
+    font-size: 1rem;
 }
